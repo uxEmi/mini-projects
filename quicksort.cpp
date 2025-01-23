@@ -15,7 +15,7 @@ int partition(vector<int>& v,int l,int h)
          j--;
        }while(v[j]>v[l]);
        if(i<j)
-         swap(v[j],v[i]);
+         swap(v[i],v[j]);
    }
    swap(v[l],v[j]);
    return j;
@@ -31,7 +31,7 @@ void quicksort(vector<int>& v,int l,int h)
 }
 int main()
 {
-    vector<int> v={1,4,2,3,9,8,7};
+    vector<int> v={8,4,5,2,1};
     quicksort(v,0,v.size()-1);
     for(auto i:v)
        cout<<i<<' ';
