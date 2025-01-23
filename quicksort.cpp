@@ -9,11 +9,11 @@ int partition(vector<int>& v,int l,int h)
        do
        {
         i++;
-       }while(v[i]<=v[l]);
+       }while(v[i]<=v[l] && i<=h);
        do
        {
          j--;
-       }while(v[j]>v[l]);
+       }while(v[j]>v[l] && j>=0);
        if(i<j)
          swap(v[i],v[j]);
    }
