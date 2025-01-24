@@ -1,39 +1,51 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int partition(vector<int>& v,int l,int h)
-{
-   int i=l,j=h;
-   while(i<j)
-   {
-       do
-       {
-        i++;
-       }while(v[i]<=v[l] && i<=h);
-       do
-       {
-         j--;
-       }while(v[j]>v[l] && j>=0);
-       if(i<j)
-         swap(v[i],v[j]);
-   }
-   swap(v[l],v[j]);
-   return j;
+
+int partition(vector<int>& v, int l, int h) {
+    int pivot = v[l];
+    int i = l;
+    int j = h;
+
+    while (i < j) {
+        while (v[i] <= pivot) {
+            i++;
+        }
+        while (v[j] > pivot) {
+            j--;
+        }
+        if (i < j) {
+            swap(v[i], v[j]);
+        }
+    }
+    swap(v[l], v[j]);
+    return j;
 }
-void quicksort(vector<int>& v,int l,int h)
-{
-    if(l<h)
-    {
-        int j=partition(v,l,h);
-        quicksort(v,l,j);
-        quicksort(v,j+1,h);
+
+void quickSort(vector<int>& v, int l, int h) {
+    if (l < h) {
+        int pivotIndex = partition(v, l, h);
+        quickSort(v, l, pivotIndex);
+        quickSort(v, pivotIndex + 1, h);
     }
 }
-int main()
-{
-    vector<int> v={8,4,5,2,1};
-    quicksort(v,0,v.size()-1);
-    for(auto i:v)
-       cout<<i<<' ';
+
+int main() {
+    vector<int> v = {8, 4, 5, 2, 1};
+
+    cout << "Original array: ";
+    for (int num : v) {
+        cout << num << " ";
+    }
+    cout << endl;
+
+    quickSort(v, 0, v.size() - 1);
+
+    cout << "Sorted array: ";
+    for (int num : v) {
+        cout << num << " ";
+    }
+    cout << endl;
+
     return 0;
 }
