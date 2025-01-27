@@ -13,4 +13,4 @@ def caesar(message, offset):
             new_index = (index + offset) % len(alphabet)
             encrypted_text += alphabet[new_index]
     print('plain text:', message)
-    print('encrypted text:', encrypted_text
+    print('encrypted text:', encrypted_text)
